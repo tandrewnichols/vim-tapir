@@ -84,14 +84,16 @@ function! tapir#request#content(request, response) abort
   let headers = join(response.headers, "\r")
 
   if text =~? 'doctype html'
-    setlocal ft=html
+    set ft=html
+    call setline(1, response.text)
   elseif headers =~? 'Content-Type: application/json'
     let text = systemlist('node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]), null, 2))" ' . string(text))
-    setlocal ft=json
+    set ft=json
+    call setline(1, text)
   endif
 
-  call setline(1, text)
-  silent! %s/\r//
+  
+  let &ft .= '.tapir'
   
   call tapir#request#configure()
 endfunction
