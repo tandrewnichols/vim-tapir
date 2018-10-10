@@ -13,6 +13,8 @@ A REST client for vim
 
 ## Overview
 
+Work in progress. This is completely unstable . . . like _alpha_ alpha. Install at your own peril. It does actually do a few things _now_ though. You can make GET, POST, PUT, etc. requests in the current window (e.g.` EGet`), a new split (e.g. `SPost`), a new vertical split (e.g. `VPut`), or a new tab (e.g. `TPatch`). The response text will be populated in that buffer (and syntax highlighted/formatted if it's html or json), and the headers will be opened above it. The `Get` family is the only really useful thing right, as I haven't added support for a post body in POST/PUT, so you can't actually send data at the moment. You may want to use `:bw` or `:bd` instead of `:q` when closing out these buffers, otherwise you get errors the next time your run a command.
+
 ## Installation
 
 If you don't have a preferred installation method, I really like vim-plug and recommend it.
@@ -58,6 +60,8 @@ git clone https://github.com/tandrewnichols/vim-tapir.git ~/.vim/bundle/vim-tapi
 ```
 
 ## Usage
+
+Coming soon.
 
 ## Contributing
 
