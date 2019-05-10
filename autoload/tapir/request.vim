@@ -70,8 +70,12 @@ endfunction
 
 function! tapir#request#open(request, response) abort
   call tapir#request#content(a:request, a:response)
+  let contentnum = bufnr('%')
   call tapir#request#headers(a:request, a:response)
-  wincmd p
+  let headernum = bufnr('%')
+  let b:tapir_alternate = contentnum
+  noautocmd wincmd p
+  let b:tapir_alternate = headernum
 endfunction
 
 function! tapir#request#content(request, response) abort
@@ -94,7 +98,7 @@ function! tapir#request#content(request, response) abort
 
   
   let &ft .= '.tapir'
-  
+
   call tapir#request#configure()
 endfunction
 
